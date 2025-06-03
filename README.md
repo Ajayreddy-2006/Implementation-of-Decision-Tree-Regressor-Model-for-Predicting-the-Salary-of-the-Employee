@@ -8,92 +8,76 @@ To write a program to implement the Decision Tree Regressor Model for Predicting
 2. Anaconda – Python 3.7 Installation / Jupyter notebook
 
 ## Algorithm
-1.Load the dataset Salary.csv using pandas and view the first few rows.
 
-2.Check dataset information and identify any missing values.
+Import the standard libraries.
 
-3.Encode the categorical column "Position" into numerical values using LabelEncoder.
+Upload the dataset and check for any null values using .isnull() function.
 
-4.Define feature variables x as "Position" and "Level", and target variable y as "Salary".
+Import LabelEncoder and encode the dataset.
 
-5.Split the dataset into training and testing sets using an 80-20 split.
+Import DecisionTreeRegressor from sklearn and apply the model on the dataset.
 
-6.Create a DecisionTreeRegressor model instance.
+Predict the values of arrays.
 
-7.Train the model using the training data.
+Import metrics from sklearn and calculate the MSE and R2 of the model on the dataset.
 
-8.Predict the salary values using the test data.
+Predict the values of array.
 
-9.Evaluate the model using Mean Squared Error (MSE) and R² Score.
+Apply to new unknown values.
 
-10.Use the trained model to predict salary for a new input [5, 6].
+
 ## Program:
 ```
 /*
 Program to implement the Decision Tree Regressor Model for Predicting the Salary of the Employee.
 Developed by: T Ajay
-Register Number:  212223230007
+RegisterNumber:  212223230007
 */
 ```
-
 ```
 import pandas as pd
-data = pd.read_csv("Salary.csv")
-data.head()
-```
-![image](https://github.com/user-attachments/assets/18f59be4-72d5-40ef-b741-b9f9387e2a42)
 
-```
-data.info()
-```
-![image](https://github.com/user-attachments/assets/0b72af3c-87b2-4fcc-bdde-ae9752688e5c)
-```
-data.isnull().sum()
-```
-![image](https://github.com/user-attachments/assets/5cd8cfd5-b524-423a-9184-06a4a94d7b7f)
-```
-from sklearn.preprocessing import LabelEncoder
-le= LabelEncoder()
-data["Position"]=le.fit_transform(data["Position"])
+
+data = pd.read_csv("Salary.csv")
+
 data.head()
-```
-![image](https://github.com/user-attachments/assets/add83b80-dda5-47b5-8924-a2cce764ef89)
-```
-x=data[["Position","Level"]]
-x.head()
-```
-![image](https://github.com/user-attachments/assets/94d401fa-c4bd-4db2-8305-779e46056581)
-```
-y=data[["Salary"]]
-```
-```
+
+data.info()
+
+data.isnull().sum()
+
+from sklearn.preprocessing import LabelEncoder
+le = LabelEncoder()
+data["Position"] = le.fit_transform(data["Position"])
+data.head()
+
+x = data[["Position", "Level"]]
+y = data["Salary"]
+
 from sklearn.model_selection import train_test_split
-x_train, x_test, y_train, y_test=train_test_split(x,y,test_size=0.2,random_state=2)
-```
-```
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
+
 from sklearn.tree import DecisionTreeRegressor
 dt = DecisionTreeRegressor()
-dt.fit(x_train,y_train)
-y_predict = dt.predict(x_test)
-```
-```
-from sklearn import metrics
-mse = metrics.mean_squared_error(y_test,y_predict)
-mse
-```
-![image](https://github.com/user-attachments/assets/7a8f822a-b392-466a-92c5-f5ef464c4dd9)
-```
-r2 = metrics.r2_score(y_test,y_predict)
-r2
-```
-![image](https://github.com/user-attachments/assets/ccb6f091-2814-4531-9366-18133a4d8e15)
-```
-dt.predict([[5,6]])
-print("T Ajay")
-print(212223230007)
-```
-![image](https://github.com/user-attachments/assets/9bb6b2dd-415f-4201-8df3-2f8d08e26d76)
+dt.fit(x_train, y_train)
+y_pred = df.predict(x_test)
 
+from sklearn import metrics
+mse = metrics.mean_squared_error(y_test, y_pred)
+mse
+
+r2 = metrics.r2_score(y_test, y_pred)
+r2
+
+dt.predict([[5,6]])
+```
+## Output:
+
+![Screenshot 2025-05-23 084354](https://github.com/user-attachments/assets/3e840371-effb-42ef-99cc-beec9e23e384)
+
+![Screenshot 2025-05-23 084354](https://github.com/user-attachments/assets/90a40f32-4347-4a11-91a3-9389b9161ef0)
+
+![Screenshot 2025-05-23 084354](https://github.com/user-attachments/assets/195942cd-0bef-4a7b-9b97-d38c1d8dc2e8)
 
 ## Result:
 Thus the program to implement the Decision Tree Regressor Model for Predicting the Salary of the Employee is written and verified using python programming.
